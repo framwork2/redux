@@ -1,12 +1,25 @@
 import { useEffect } from "react"
 import { Button } from "../../showInfor"
+import { useSelector, useDispatch } from 'react-redux';
+import { Iproduct } from "../../../interface/product"
+import { fetch } from "../../../action/product";
+import { useAppDispatch, useAppSelector } from "../../../store/hook";
+import { Dispatch } from "redux";
 import { useDispatch, useSelector } from "react-redux"
 import axios from "axios"
 import { Iproduct } from "../../../interface/product"
 
-
 export default function Example ()
 {
+    const dispath: Dispatch<any> = useAppDispatch()
+    const { products, error } = useAppSelector( ( state: any ) => state.product )
+
+    useEffect( () =>
+    {
+
+        dispath( fetch() )
+
+    }, [ dispath ] )
     const dispath = useDispatch()
     const { products, error } = useSelector( ( state: any ) => state )
 
