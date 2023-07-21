@@ -3,6 +3,7 @@ export interface Signup
     _id: string,
     email: string,
     password: string,
+    name: string,
     confirmPassword: string,
     role: string
 
@@ -10,5 +11,6 @@ export interface Signup
 export interface Login
 {
     email: string,
-    password: string
+    password: string,
+    name: string
 }
