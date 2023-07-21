@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
 import { legacy_createStore as createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { productReducer } from "../reducer/product";
-import { LoginReducer } from '../reducer/login';
+import { LoginReducer, singupReducer } from '../reducer/auths';
 
 const composeEnhancers =
     typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -17,7 +17,8 @@ const enhancer = composeEnhancers(
 const Root = combineReducers(
     {
         product: productReducer,
-        auth: LoginReducer
+        login: LoginReducer,
+        singup: singupReducer
     }
 )
 const store = createStore( Root, enhancer );
