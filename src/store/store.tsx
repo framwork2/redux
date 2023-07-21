@@ -27,3 +27,25 @@ export default store
 export type RootState = ReturnType<typeof store.getState>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch
+import { produce } from "immer"
+const productReducer = ( state = { products: [], error: "" }, action: any ) =>
+{
+    return produce( state, state =>
+    {
+        switch ( action.type )
+        {
+            case "fetch/product":
+                state.products = action.payload
+                break;
+
+            default:
+                state;
+        }
+
+    } )
+
+
+}
+
+const store = createStore( productReducer );
+export default store
