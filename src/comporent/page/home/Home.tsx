@@ -1,13 +1,30 @@
-import React from 'react'
 import Example from '../productlist/productList'
-import Productdetail from '../productDetail/productDetail'
 import Example1 from '../nav/products'
-import Login from '../login/Login'
+// import "./style.css"
+import { useEffect, useState } from 'react';
+const images = [
+    'https://pos.nvncdn.net/f4d87e-8901/ps/20230624_ZneqNefv6B.jpeg',
+    'https://pos.nvncdn.net/f4d87e-8901/ps/20230624_RKsVgvYej6.jpeg',
+    'https://pos.nvncdn.net/f4d87e-8901/ps/20230624_aVFOwjwh2q.jpeg',
+];
 
-type Props = {}
 
-const Home = ( props: Props ) =>
+const Home = () =>
 {
+    const [ currentImageIndex, setCurrentImageIndex ] = useState( 0 );
+
+    // Function to change the current image index
+    const changeImage = () =>
+    {
+        setCurrentImageIndex( ( prevIndex ) => ( prevIndex + 1 ) % images.length );
+    };
+
+    // Use useEffect to change the image every 5 seconds
+    useEffect( () =>
+    {
+        const interval = setInterval( changeImage, 2000 );
+        return () => clearInterval( interval );
+    }, [] );
     return (
         <>
             <>
@@ -19,8 +36,8 @@ const Home = ( props: Props ) =>
                         <div className="flex flex-col lg:flex-row items-center">
                             {/* Image */ }
                             <img
-                                className="w-full lg:w-1/2 mb-8 lg:mb-0"
-                                src="https://pos.nvncdn.net/f4d87e-8901/ps/20230624_ZneqNefv6B.jpeg"
+                                className="w-full lg:w-1/2 mb-8 lg:mb-0 banner-image"
+                                src={ images[ currentImageIndex ] }
                                 alt="Home Appliances"
                             />
                             {/* Text content */ }

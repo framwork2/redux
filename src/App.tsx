@@ -6,6 +6,7 @@ import Home from './comporent/page/home/Home'
 import Productdetail from './comporent/page/productDetail/productDetail';
 import Login from './comporent/page/login/Login';
 import Singup from './comporent/page/singup/Singup';
+import Dasbroad from './comporent/page/admin/dasbroad/dasbroad';
 
 function App ()
 {
@@ -22,6 +23,9 @@ function App ()
             <Route path="/singup" element={ <Singup /> } />
 
 
+          </Routes>
+          <Routes>
+            <Route path='admin' element={ <Dasbroad></Dasbroad> } />
           </Routes>
         </div>
       </Router>
