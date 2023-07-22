@@ -1,6 +1,5 @@
 import { useEffect } from "react"
 import { Button } from "../../showInfor"
-import { useSelector, useDispatch } from 'react-redux';
 import { Iproduct } from "../../../interface/product"
 import { fetch } from "../../../action/product";
 import { useAppDispatch, useAppSelector } from "../../../store/hook";

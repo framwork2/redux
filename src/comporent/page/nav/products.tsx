@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useAppDispatch, useAppSelector } from '../../../store/hook'
+import { Link } from 'react-router-dom'
 
 const navigation = [
     { name: 'HOME', href: '/', current: true },
@@ -19,6 +20,7 @@ export default function Example1 ()
     const dispatch = useAppDispatch()
 
     const isAuthenticated = useAppSelector( ( state ) => state.login.isAuthenticated );
+    console.log( isAuthenticated );
 
 
     const user = useAppSelector( ( state ) => state.login.user )
@@ -95,6 +97,7 @@ export default function Example1 ()
 
                                         <p className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                                         >{ storedName?.user?.name }</p>
+                                        <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onClick={ () => dispatch( { type: "LOGOUT", payload: user?._id } ) }>logout</button>
 
                                         <Menu as="div" className="relative ml-3">
                                             <div>
@@ -129,19 +132,19 @@ export default function Example1 ()
                                                     </Menu.Item>
                                                     <Menu.Item>
                                                         { ( { active } ) => (
-                                                            <a
-                                                                href="#"
+                                                            <Link
+                                                                to={ "/admin" }
                                                                 className={ classNames( active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700' ) }
                                                             >
-                                                                Settings
-                                                            </a>
+                                                                Admin
+                                                            </Link>
                                                         ) }
                                                     </Menu.Item>
                                                     <Menu.Item>
                                                         { ( { active } ) => (
                                                             <a
                                                                 href=""
-                                                                onClick={ () => dispatch( { type: "LOGOUT", payload: user?._id } ) }
+
 
                                                                 className={ classNames( active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700' ) }
                                                             >
@@ -156,17 +159,21 @@ export default function Example1 ()
                                 ) : (
                                     <div className="flex space-x-4">
                                         {/* Đăng nhập */ }
-                                        <a href="/login"><button
-                                            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                                        >
-                                            Đăng nhập
-                                        </button></a>
+                                        <Link to={ "/login" }>
+                                            <button
+                                                className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                                            >
+                                                Đăng nhập
+                                            </button>
+                                        </Link>
                                         {/* Đăng ký */ }
-                                        <button
-                                            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                                        >
-                                            Đăng ký
-                                        </button>
+                                        <Link to={ "/singup" }>
+                                            <button
+                                                className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                                            >
+                                                Đăng ký
+                                            </button>
+                                        </Link>
                                     </div>
                                 ) }
                             </div>

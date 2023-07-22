@@ -9,6 +9,10 @@ export const productReducer = ( state = { products: [], error: "" }, action: any
             case "fetch/product":
                 state.products = action.payload
                 break;
+            case "delete/product":
+                const id = action.payload
+                state.products = state.products.filter( ( item: any ) => item.id != id )
+                break;
 
             default:
                 state;
