@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import Navbar from '../navbar/Navbar'
+import { useEffect } from 'react'
 import { Button } from '../../../showInfor'
 import { AiTwotoneDelete, AiFillPlusSquare } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from '../../../../store/hook';
@@ -12,7 +11,7 @@ import { Iproduct } from '../../../../interface/product';
 
 const Dasbroad = () =>
 {
-    const { products, error } = useAppSelector( ( state: any ) => state.product )
+    const { products } = useAppSelector( ( state: any ) => state.product )
     console.log( products );
 
     const dispatch: Dispatch<any> = useAppDispatch()
@@ -105,7 +104,7 @@ const Dasbroad = () =>
                                         </td>
                                         <td className="border-t-2 border-gray-200 px-6 py-4">{ item.categoryId }</td>
                                         <td className="border-t-2 border-gray-200 w-10 text-center">
-                                            <Button type="danger" icon={ <AiTwotoneDelete /> } onclick={ () => dispatch( remove( item._id ) ) } />
+                                            <Button type="danger" icon={ <AiTwotoneDelete /> } onclick={ () => dispatch( remove( item._id! ) ) } />
                                         </td>
                                         <td className="border-t-2 border-gray-200 w-10 text-center">
                                             <Button type="primary" icon={ <AiFillPlusSquare /> } />
