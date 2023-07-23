@@ -14,17 +14,24 @@ export const fetch = () => async ( dispath: any ) =>
 
     }
 }
-export const add = ( product: Iproduct ) => async ( dispath: any ) =>
+export const add = ( product: Iproduct ) => async ( dispatch: any ) =>
 {
     try
     {
-        const { data } = await axios.post( `http://localhost:8080/api`, product )
-        dispath( { type: "add/product", payload: data } )
+
+        const { data } = await axios.post( `http://localhost:8080/api`, product
+
+
+
+        );
+        dispatch( { type: "add/product", payload: data } )
         console.log( data );
 
-    } catch ( error )
-    {
 
+    } catch ( error: any )
+    {
+    } finally
+    {
     }
 }
 export const edit = ( product: Iproduct ) => async ( dispath: any ) =>

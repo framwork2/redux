@@ -1,4 +1,3 @@
-import React from 'react'
 import Example1 from '../nav/products'
 
 type Props = {}
@@ -6,291 +5,184 @@ type Props = {}
 const Productdetail = ( props: Props ) =>
 {
     return (
-        <section>
+        <section className="text-gray-600 body-font overflow-hidden">
             <Example1 />
-            <div className="relative mx-auto max-w-screen-xl px-4 py-8">
-                <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
-                    <div className="grid grid-cols-2 gap-4 md:grid-cols-1">
-                        <img
-                            alt="Les Paul"
-                            src="https://images.unsplash.com/photo-1456948927036-ad533e53865c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                            className="aspect-square w-full rounded-xl object-cover"
-                        />
-
-                        <div className="grid grid-cols-2 gap-4 lg:mt-4">
-                            <img
-                                alt="Les Paul"
-                                src="https://images.unsplash.com/photo-1456948927036-ad533e53865c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                                className="aspect-square w-full rounded-xl object-cover"
-                            />
-
-                            <img
-                                alt="Les Paul"
-                                src="https://images.unsplash.com/photo-1456948927036-ad533e53865c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                                className="aspect-square w-full rounded-xl object-cover"
-                            />
-
-                            <img
-                                alt="Les Paul"
-                                src="https://images.unsplash.com/photo-1456948927036-ad533e53865c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                                className="aspect-square w-full rounded-xl object-cover"
-                            />
-
-                            <img
-                                alt="Les Paul"
-                                src="https://images.unsplash.com/photo-1456948927036-ad533e53865c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                                className="aspect-square w-full rounded-xl object-cover"
-                            />
-                        </div>
-                    </div>
-
-                    <div className="sticky top-0">
-                        <strong
-                            className="rounded-full border border-blue-600 bg-gray-100 px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600"
-                        >
-                            Pre Order
-                        </strong>
-
-                        <div className="mt-8 flex justify-between">
-                            <div className="max-w-[35ch] space-y-2">
-                                <h1 className="text-xl font-bold sm:text-2xl">
-                                    Fun Product That Does Something Cool
-                                </h1>
-
-                                <p className="text-sm">Highest Rated Product</p>
-
-                                <div className="-ms-0.5 flex">
-                                    <svg
-                                        className="h-5 w-5 text-yellow-400"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                    >
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                        />
-                                    </svg>
-
-                                    <svg
-                                        className="h-5 w-5 text-yellow-400"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                    >
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                        />
-                                    </svg>
-
-                                    <svg
-                                        className="h-5 w-5 text-yellow-400"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                    >
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                        />
-                                    </svg>
-
-                                    <svg
-                                        className="h-5 w-5 text-yellow-400"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                    >
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                        />
-                                    </svg>
-
-                                    <svg
-                                        className="h-5 w-5 text-gray-200"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                    >
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                        />
-                                    </svg>
-                                </div>
-                            </div>
-
-                            <p className="text-lg font-bold">$119.99</p>
-                        </div>
-
-                        <div className="mt-4">
-                            <div className="prose max-w-none">
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                                    veniam dicta beatae eos ex error culpa delectus rem tenetur,
-                                    architecto quam nesciunt, dolor veritatis nisi minus inventore,
-                                    rerum at recusandae?
-                                </p>
-                            </div>
-
-                            <button className="mt-2 text-sm font-medium underline">Read More</button>
-                        </div>
-
-                        <form className="mt-8">
-                            <fieldset>
-                                <legend className="mb-1 text-sm font-medium">Color</legend>
-
-                                <div className="flex flex-wrap gap-1">
-                                    <label htmlFor="color_tt" className="cursor-pointer">
-                                        <input
-                                            type="radio"
-                                            name="color"
-                                            id="color_tt"
-                                            className="peer sr-only"
-                                        />
-
-                                        <span
-                                            className="group inline-block rounded-full border px-3 py-1 text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                                        >
-                                            Texas Tea
-                                        </span>
-                                    </label>
-
-                                    <label htmlFor="color_fr" className="cursor-pointer">
-                                        <input
-                                            type="radio"
-                                            name="color"
-                                            id="color_fr"
-                                            className="peer sr-only"
-                                        />
-
-                                        <span
-                                            className="group inline-block rounded-full border px-3 py-1 text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                                        >
-                                            Fiesta Red
-                                        </span>
-                                    </label>
-
-                                    <label htmlFor="color_cb" className="cursor-pointer">
-                                        <input
-                                            type="radio"
-                                            name="color"
-                                            id="color_cb"
-                                            className="peer sr-only"
-                                        />
-
-                                        <span
-                                            className="group inline-block rounded-full border px-3 py-1 text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                                        >
-                                            Cobalt Blue
-                                        </span>
-                                    </label>
-                                </div>
-                            </fieldset>
-
-                            <fieldset className="mt-4">
-                                <legend className="mb-1 text-sm font-medium">Size</legend>
-
-                                <div className="flex flex-wrap gap-1">
-                                    <label htmlFor="size_xs" className="cursor-pointer">
-                                        <input
-                                            type="radio"
-                                            name="size"
-                                            id="size_xs"
-                                            className="peer sr-only"
-                                        />
-
-                                        <span
-                                            className="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                                        >
-                                            XS
-                                        </span>
-                                    </label>
-
-                                    <label htmlFor="size_s" className="cursor-pointer">
-                                        <input
-                                            type="radio"
-                                            name="size"
-                                            id="size_s"
-                                            className="peer sr-only"
-                                        />
-
-                                        <span
-                                            className="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                                        >
-                                            S
-                                        </span>
-                                    </label>
-
-                                    <label htmlFor="size_m" className="cursor-pointer">
-                                        <input
-                                            type="radio"
-                                            name="size"
-                                            id="size_m"
-                                            className="peer sr-only"
-                                        />
-
-                                        <span
-                                            className="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                                        >
-                                            M
-                                        </span>
-                                    </label>
-
-                                    <label htmlFor="size_l" className="cursor-pointer">
-                                        <input
-                                            type="radio"
-                                            name="size"
-                                            id="size_l"
-                                            className="peer sr-only"
-                                        />
-
-                                        <span
-                                            className="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                                        >
-                                            L
-                                        </span>
-                                    </label>
-
-                                    <label htmlFor="size_xl" className="cursor-pointer">
-                                        <input
-                                            type="radio"
-                                            name="size"
-                                            id="size_xl"
-                                            className="peer sr-only"
-                                        />
-
-                                        <span
-                                            className="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                                        >
-                                            XL
-                                        </span>
-                                    </label>
-                                </div>
-                            </fieldset>
-
-                            <div className="mt-8 flex gap-4">
-                                <div>
-                                    <label htmlFor="quantity" className="sr-only">Qty</label>
-
-                                    <input
-                                        type="number"
-                                        id="quantity"
-                                        min="1"
-                                        value="1"
-                                        className="w-12 rounded border-gray-200 py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                                    />
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    className="block rounded bg-green-600 px-5 py-3 text-xs font-medium text-white hover:bg-green-500"
+            <div className="container px-5 py-24 mx-auto">
+                <div className="lg:w-4/5 mx-auto flex flex-wrap">
+                    <img
+                        alt="ecommerce"
+                        className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+                        src="https://pos.nvncdn.net/f4d87e-8901/ps/20230612_3TcWBwxZSz.jpeg"
+                    />
+                    <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                        <h2 className="text-sm title-font text-gray-500 tracking-widest">
+                            BRAND NAME
+                        </h2>
+                        <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
+                            The Catcher in the Rye
+                        </h1>
+                        <div className="flex mb-4">
+                            <span className="flex items-center">
+                                <svg
+                                    fill="currentColor"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={ 2 }
+                                    className="w-4 h-4 text-indigo-500"
+                                    viewBox="0 0 24 24"
                                 >
-                                    Add to Cart
-                                </button>
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                </svg>
+                                <svg
+                                    fill="currentColor"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={ 2 }
+                                    className="w-4 h-4 text-indigo-500"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                </svg>
+                                <svg
+                                    fill="currentColor"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={ 2 }
+                                    className="w-4 h-4 text-indigo-500"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                </svg>
+                                <svg
+                                    fill="currentColor"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={ 2 }
+                                    className="w-4 h-4 text-indigo-500"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                </svg>
+                                <svg
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={ 2 }
+                                    className="w-4 h-4 text-indigo-500"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                </svg>
+                                <span className="text-gray-600 ml-3">4 Reviews</span>
+                            </span>
+                            <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
+                                <a className="text-gray-500">
+                                    <svg
+                                        fill="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={ 2 }
+                                        className="w-5 h-5"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                                    </svg>
+                                </a>
+                                <a className="text-gray-500">
+                                    <svg
+                                        fill="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={ 2 }
+                                        className="w-5 h-5"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+                                    </svg>
+                                </a>
+                                <a className="text-gray-500">
+                                    <svg
+                                        fill="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={ 2 }
+                                        className="w-5 h-5"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
+                                    </svg>
+                                </a>
+                            </span>
+                        </div>
+                        <p className="leading-relaxed">
+                            Fam locavore kickstarter distillery. Mixtape chillwave tumeric
+                            sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps
+                            cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine
+                            tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean
+                            shorts keytar banjo tattooed umami cardigan.
+                        </p>
+                        <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
+                            <div className="flex">
+                                <span className="mr-3">Color</span>
+                                <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none" />
+                                <button className="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none" />
+                                <button className="border-2 border-gray-300 ml-1 bg-indigo-500 rounded-full w-6 h-6 focus:outline-none" />
                             </div>
-                        </form>
+                            <div className="flex ml-6 items-center">
+                                <span className="mr-3">Size</span>
+                                <div className="relative">
+                                    <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
+                                        <option>SM</option>
+                                        <option>M</option>
+                                        <option>L</option>
+                                        <option>XL</option>
+                                    </select>
+                                    <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
+                                        <svg
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={ 2 }
+                                            className="w-4 h-4"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="M6 9l6 6 6-6" />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex">
+                            <span className="title-font font-medium text-2xl text-gray-900">
+                                $58.00
+                            </span>
+                            <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                                Button
+                            </button>
+                            <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                                <svg
+                                    fill="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={ 2 }
+                                    className="w-5 h-5"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section> )
+        </section>
+    )
 }
 
 export default Productdetail

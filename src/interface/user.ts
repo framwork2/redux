@@ -1,11 +1,11 @@
 export interface Signup
 {
-    _id: string,
+    _id?: string,
     email: string,
     password: string,
     name: string,
     confirmPassword: string,
-    role: string
+    role?: string
 
 }
 export interface Login
