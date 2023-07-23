@@ -6,4 +6,5 @@ export interface Iproduct
     chitiet: string,
     img?: string,
     categoryId?: string
+
 }
