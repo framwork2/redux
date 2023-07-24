@@ -4,6 +4,8 @@ import { Iproduct } from "../../../interface/product"
 import { fetch } from "../../../action/product";
 import { useAppDispatch, useAppSelector } from "../../../store/hook";
 import { Dispatch } from "redux";
+import { Link } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux"
 import axios from "axios"
 import { Iproduct } from "../../../interface/product"
@@ -58,7 +60,7 @@ export default function Example ()
                             <h3 className="mt-4 text-sm text-gray-700">{ product.chitiet }</h3>
 
                             <p className="mt-1 text-lg font-medium text-gray-900">{ product.price }</p>
-                            <Button type="primary" >add</Button>
+                            <Link to={ "product/" + product._id }><Button type="primary" >add</Button></Link>
                         </a>
                     ) ) }
                 </div>
