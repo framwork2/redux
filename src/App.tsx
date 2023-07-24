@@ -19,7 +19,7 @@ function App ()
         <div>
           <Routes>
             <Route path="/" element={ <Home /> } />
-            <Route path="/products/" element={ <Productdetail /> } />
+            <Route path="/product/:_id" element={ <Productdetail /> } />
             <Route path="/login" element={ <Login /> } />
             <Route path="/singup" element={ <Singup /> } />
 

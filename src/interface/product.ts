@@ -4,6 +4,6 @@ export interface Iproduct
     name: string,
     price: number,
     chitiet: string,
-    img?: string,
+    img?: string | undefined,
     categoryId?: string
 }

@@ -60,3 +60,16 @@ export const remove = ( id: number | string ) => async ( dispath: any ) =>
 
     }
 }
+export const get = ( product: Iproduct ) => async ( dispath: any ) =>
+{
+    try
+    {
+        await axios.delete( `http://localhost:8080/api/${ product._id }` )
+        dispath( { type: "get/product", payload: product } )
+        console.log( product );
+
+    } catch ( error )
+    {
+
+    }
+}
