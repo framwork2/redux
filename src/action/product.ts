@@ -34,11 +34,11 @@ export const add = ( product: Iproduct ) => async ( dispatch: any ) =>
     {
     }
 }
-export const edit = ( product: Iproduct ) => async ( dispath: any ) =>
+export const edit = ( id: Iproduct ) => async ( dispath: any ) =>
 {
     try
     {
-        const { data } = await axios.put( `http://localhost:8080/api/${ product._id }`, product )
+        const { data } = await axios.put( `http://localhost:8080/api/${ id._id }`, id )
         dispath( { type: "edit/product", payload: data } )
         console.log( data );
 
@@ -64,7 +64,7 @@ export const get = ( product: Iproduct ) => async ( dispath: any ) =>
 {
     try
     {
-        await axios.delete( `http://localhost:8080/api/${ product._id }` )
+        await axios.get( `http://localhost:8080/api/${ product._id }` )
         dispath( { type: "get/product", payload: product } )
         console.log( product );
 
