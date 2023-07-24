@@ -8,6 +8,7 @@ import Login from './comporent/page/login/Login';
 import Singup from './comporent/page/singup/Singup';
 import Dasbroad from './comporent/page/admin/dasbroad/dasbroad';
 import Add from './comporent/page/admin/add/Add';
+import EditProduct from './comporent/page/admin/edit/Edit';
 
 function App ()
 {
@@ -28,6 +29,8 @@ function App ()
           <Routes>
             <Route path='/admin' element={ <Dasbroad></Dasbroad> } />
             <Route path='/admin/add' element={ <Add /> } />
+            <Route path='/admin/edit/:_id' element={ <EditProduct /> } />
+
 
           </Routes>
         </div>

@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 import { Button } from '../../../showInfor'
-import { AiTwotoneDelete, AiFillPlusSquare } from "react-icons/ai";
+import { AiTwotoneDelete, AiFillPlusSquare, AiOutlineInteraction } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from '../../../../store/hook';
 import { fetch, remove } from '../../../../action/product';
 import { Dispatch } from 'redux';
 import { Iproduct } from '../../../../interface/product';
+import { Link } from 'react-router-dom';
 
 
 
@@ -69,6 +70,9 @@ const Dasbroad = () =>
                             <thead>
                                 <tr>
                                     <th className="px-6 py-4 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">
+                                        stt
+                                    </th>
+                                    <th className="px-6 py-4 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">
                                         id
                                     </th>
                                     <th className="px-6 py-4 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
@@ -93,8 +97,10 @@ const Dasbroad = () =>
                                 </tr>
                             </thead>
                             <tbody>
-                                { products.map( ( item: Iproduct ) => (
+                                { products.map( ( item: Iproduct, index: any ) => (
                                     <tr key={ item._id }>
+                                        <td className="border-t-2 border-gray-200 px-6 py-4">{ index + 1 }</td>
+
                                         <td className="border-t-2 border-gray-200 px-6 py-4">{ item._id }</td>
                                         <td className="border-t-2 border-gray-200 px-6 py-4">{ item.name }</td>
                                         <td className="border-t-2 border-gray-200 px-6 py-4">{ item.price }</td>
@@ -106,12 +112,12 @@ const Dasbroad = () =>
                                         <td className="border-t-2 border-gray-200 w-10 text-center">
                                             <Button type="danger" icon={ <AiTwotoneDelete /> } onclick={ () => dispatch( remove( item._id! ) ) } />
                                         </td>
-                                        <td className="border-t-2 border-gray-200 w-10 text-center">
+                                        <Link to={ "add" }><td className="border-t-2 border-gray-200 w-10 text-center">
                                             <Button type="primary" icon={ <AiFillPlusSquare /> } />
-                                        </td>
-                                        <td className="border-t-2 border-gray-200 w-10 text-center">
-                                            <Button type="danger" icon={ <AiTwotoneDelete /> } />
-                                        </td>
+                                        </td></Link>
+                                        <Link to={ "edit/" + item._id }>   <td className="border-t-2 border-gray-200 w-10 text-center">
+                                            <Button type="danger" icon={ <AiOutlineInteraction /> } />
+                                        </td></Link>
                                     </tr>
                                 ) ) }
                             </tbody>
