@@ -9,6 +9,7 @@ const Add = () =>
 {
     const [ productData, setProductData ] = useState( {
         name: '',
+        size: "",
         price: 0,
         categoryId: '',
         chitiet: '',
@@ -34,6 +35,7 @@ const Add = () =>
         // Xóa trạng thái sau khi thêm sản phẩm thành công
         setProductData( {
             name: '',
+            size: '',
             price: 0,
             categoryId: '',
             chitiet: '',
@@ -47,6 +49,20 @@ const Add = () =>
         setProductData( {
             ...productData,
             [ name ]: value,
+        } );
+    };
+    const handleImageChange = ( e: any ) =>
+    {
+        // Lấy file đã chọn từ phần tử input
+        const selectedFile = e.target.files[ 0 ];
+
+        // Tạo đối tượng URL để tạo đường dẫn tạm thời cho hình ảnh
+        const temporaryImageUrl = URL.createObjectURL( selectedFile );
+
+        // Lưu đường dẫn tạm thời vào trạng thái productData
+        setProductData( {
+            ...productData,
+            img: temporaryImageUrl,
         } );
     };
     const handleCategoryChange = ( e: any ) =>
@@ -92,6 +108,16 @@ const Add = () =>
                         onChange={ handleChange }
                     />
                 </div>
+                <div className="mb-4">
+                    <input
+                        className="border rounded w-full py-2 px-3"
+                        type="text"
+                        placeholder="size"
+                        name="size"
+                        value={ productData.size }
+                        onChange={ handleChange }
+                    />
+                </div>
                 <div className="mb-3">
                     <label className="form-label">Category</label>
                     <select
@@ -110,15 +136,23 @@ const Add = () =>
                 </div>
 
                 <div className="mb-4">
+                    {/* Phần tử input cho phép tải lên hình ảnh */ }
                     <input
-                        className="border rounded w-full py-2 px-3"
-                        type="text"
-                        placeholder="URL ảnh sản phẩm"
+                        type="file"
                         name="img"
-                        value={ productData.img }
-                        onChange={ handleChange }
+                        onChange={ handleImageChange }
                     />
                 </div>
+                {/* Hiển thị hình ảnh đã chọn (tạm thời) */ }
+                { productData.img && (
+                    <div className="mb-4">
+                        <img
+                            src={ productData.img }
+                            alt="Preview"
+                            className="w-32 h-32 rounded"
+                        />
+                    </div>
+                ) }
                 <button
                     className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded"
                     type="submit"
