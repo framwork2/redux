@@ -30,7 +30,6 @@ export const productReducer = ( state = initialState, action: any ) =>
 
                 state.products.push( action.payload )
                 break;
-
             case "edit/product":
                 const updatedProducts = state.products.map( ( product ) =>
                     product._id === action.payload.id ? action.payload : product
@@ -40,6 +39,7 @@ export const productReducer = ( state = initialState, action: any ) =>
                     products: updatedProducts,
 
                 };
+
 
             case "add_form":
                 state.productss = {

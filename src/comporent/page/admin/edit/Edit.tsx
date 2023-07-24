@@ -16,7 +16,6 @@ const EditProduct = () =>
 
     console.log( products );
 
-
     // State để lưu trữ thông tin sản phẩm chỉnh sửa
     const [ editedProduct, setEditedProduct ] = useState( {
         _id: "",
@@ -25,14 +24,13 @@ const EditProduct = () =>
         chitiet: "",
         categoryId: "",
         img: ""
-
     } );
-    console.log( editedProduct );
 
     useEffect( () =>
     {
-        dispatch( fetchCategory() )
-    }, [ dispatch ] )
+        dispatch( fetchCategory() );
+    }, [ dispatch ] );
+
     useEffect( () =>
     {
         if ( products )
@@ -47,7 +45,20 @@ const EditProduct = () =>
             } );
         }
     }, [ products ] );
+    const handleImageChange = ( e: any ) =>
+    {
+        // Lấy file đã chọn từ phần tử input
+        const selectedFile = e.target.files[ 0 ];
 
+        // Tạo đối tượng URL để tạo đường dẫn tạm thời cho hình ảnh
+        const temporaryImageUrl = URL.createObjectURL( selectedFile );
+
+        // Lưu đường dẫn tạm thời vào trạng thái productData
+        setEditedProduct( {
+            ...editedProduct,
+            img: temporaryImageUrl,
+        } );
+    };
     const handleCategoryChange = ( e: any ) =>
     {
         setEditedProduct( {
@@ -55,8 +66,6 @@ const EditProduct = () =>
             categoryId: e.target.value,
         } );
     };
-
-
 
     const handleInputChange = ( e: any ) =>
     {
@@ -70,46 +79,51 @@ const EditProduct = () =>
     const handleUpdateProduct = () =>
     {
         // Gửi hành động để cập nhật thông tin sản phẩm
-        dispatch( edit( editedProduct, ) );
+        dispatch( edit( editedProduct ) );
     };
 
     return (
-        <div>
-            <h2>Edit Product</h2>
-            <input
-                type="text"
-                name="name"
-                value={ editedProduct.name }
-                onChange={ handleInputChange }
-            />
-            <input
-                type="number"
-                name="price"
-                value={ editedProduct.price }
-                onChange={ handleInputChange }
-            />
-            <input
-                type="text"
-                name="img"
-                value={ editedProduct.img }
-                onChange={ handleInputChange }
-            />
+        <div className="max-w-md mx-auto p-4">
+            <h2 className="text-xl font-semibold mb-4">Edit Product</h2>
+            <div className="mb-4">
+                <label className="block text-sm font-medium mb-1">Name</label>
+                <input
+                    type="text"
+                    name="name"
+                    value={ editedProduct.name }
+                    onChange={ handleInputChange }
+                    className="border rounded py-2 px-3 w-full"
+                />
+            </div>
+            <div className="mb-4">
+                <label className="block text-sm font-medium mb-1">Price</label>
+                <input
+                    type="number"
+                    name="price"
+                    value={ editedProduct.price }
+                    onChange={ handleInputChange }
+                    className="border rounded py-2 px-3 w-full"
+                />
+            </div>
 
-            <textarea
-                name="chitiet"
-                value={ editedProduct.chitiet }
-                onChange={ handleInputChange }
-            />
-
-            <div className="mb-3">
-                <label className="form-label">Category</label>
+            <div className="mb-4">
+                <label className="block text-sm font-medium mb-1">Details</label>
+                <textarea
+                    name="chitiet"
+                    value={ editedProduct.chitiet }
+                    onChange={ handleInputChange }
+                    className="border rounded py-2 px-3 w-full h-32"
+                />
+            </div>
+            <div className="mb-4">
+                <label className="block text-sm font-medium mb-1">Category</label>
                 <select
                     name="categoryId"
                     value={ editedProduct.categoryId }
                     onChange={ handleCategoryChange }
-                    className="border rounded w-full py-2 px-3"
+                    className="border rounded py-2 px-3 w-full"
                 >
-                    <option value="">Chọn category</option>
+                    <option value="">Select category</option>
                     { category.map( ( category: Category ) => (
                         <option key={ category._id } value={ category._id }>
                             { category.name }
@@ -117,7 +131,30 @@ const EditProduct = () =>
                     ) ) }
                 </select>
             </div>
-            <button onClick={ handleUpdateProduct }>Update Product</button>
+            <div className="mb-4">
+                {/* Phần tử input cho phép tải lên hình ảnh */ }
+                <input
+                    type="file"
+                    name="img"
+                    onChange={ handleImageChange }
+                />
+            </div>
+            {/* Hiển thị hình ảnh đã chọn (tạm thời) */ }
+            { editedProduct.img && (
+                <div className="mb-4">
+                    <img
+                        src={ editedProduct.img }
+                        alt="Preview"
+                        className="w-32 h-32 rounded"
+                    />
+                </div>
+            ) }
+            <button
+                onClick={ handleUpdateProduct }
+                className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+            >
+                Update Product
+            </button>
         </div>
     );
 };
