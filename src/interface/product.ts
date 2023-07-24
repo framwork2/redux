@@ -6,4 +6,5 @@ export interface Iproduct
     chitiet: string,
     img?: string | undefined,
     categoryId?: string
+
 }

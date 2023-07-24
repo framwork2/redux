@@ -6,6 +6,9 @@ import { useAppDispatch, useAppSelector } from "../../../store/hook";
 import { Dispatch } from "redux";
 import { Link } from "react-router-dom";
 
+import { useDispatch, useSelector } from "react-redux"
+import axios from "axios"
+import { Iproduct } from "../../../interface/product"
 
 export default function Example ()
 {
@@ -18,6 +21,27 @@ export default function Example ()
         dispath( fetch() )
 
     }, [ dispath ] )
+    const dispath = useDispatch()
+    const { products, error } = useSelector( ( state: any ) => state )
+
+    useEffect( () =>
+    {
+        const fetch = async () =>
+        {
+            try
+            {
+                const { data } = await axios.get( `http://localhost:8080/api` )
+                dispath( { type: "fetch/product", payload: data } )
+                console.log( data );
+
+            } catch ( error )
+            {
+
+            }
+        }
+        fetch()
+
+    }, [] )
     return (
         <div className="bg-white">
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
