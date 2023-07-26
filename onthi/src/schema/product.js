@@ -5,6 +5,5 @@ export const productSchema = joi.object( {
     img: joi.string().required(),
     chitiet: joi.string().required(),
     size: joi.string().required(),
-
     categoryId: joi.string().required()
 } )
