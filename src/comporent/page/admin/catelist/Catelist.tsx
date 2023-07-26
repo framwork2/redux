@@ -57,7 +57,7 @@ const Catelist = () =>
                                         <Link to={ "addcate" }><td className="border-t-2 border-gray-200 w-10 text-center">
                                             <Button type="primary" icon={ <AiFillPlusSquare /> } />
                                         </td></Link>
-                                        <Link to={ "edit/" + item._id }>   <td className="border-t-2 border-gray-200 w-10 text-center">
+                                        <Link to={ "editcate/" + item._id }>   <td className="border-t-2 border-gray-200 w-10 text-center">
                                             <Button type="danger" icon={ <AiOutlineInteraction /> } />
                                         </td></Link>
                                     </tr>

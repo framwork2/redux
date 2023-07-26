@@ -13,6 +13,7 @@ import ProductPage from './comporent/page/productpage/ProductPage';
 import Profile from './comporent/page/profile/Profile';
 import Catelist from './comporent/page/admin/catelist/Catelist';
 import CateAdd from './comporent/page/admin/addCate/CateAdd';
+import EditCate from './comporent/page/admin/editCate/Editcate';
 
 function App ()
 {
@@ -43,6 +44,8 @@ function App ()
             <Route path='/admin/cate' element={ <Catelist /> } />
 
             <Route path='/admin/edit/:_id' element={ <EditProduct /> } />
+            <Route path='/admin/cate/editcate/:_id' element={ <EditCate /> } />
+
 
 
           </Routes>
