@@ -1,30 +1,23 @@
-import { useEffect } from 'react'
-import { Button } from '../../../showInfor'
+
 import { AiTwotoneDelete, AiFillPlusSquare, AiOutlineInteraction } from "react-icons/ai";
-import { useAppDispatch, useAppSelector } from '../../../../store/hook';
-import { fetch, remove } from '../../../../action/product';
-import { Dispatch } from 'redux';
-import { Iproduct } from '../../../../interface/product';
-import { Link } from 'react-router-dom';
-import Nav from '../navAdmin/Nav';
-
-
-
-
-const Dasbroad = () =>
+import { Button } from "../../../showInfor";
+import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../../../store/hook";
+import { useEffect } from "react";
+import { fetchCategory, remove } from "../../../../action/category";
+import { Dispatch } from "redux";
+import { Category } from "../../../../interface/category";
+import Nav from "../navAdmin/Nav";
+const Catelist = () =>
 {
-    const { products } = useAppSelector( ( state: any ) => state.product )
-    console.log( products );
-
     const dispatch: Dispatch<any> = useAppDispatch()
+    const { category } = useAppSelector( ( state ) => state.category )
     useEffect( () =>
     {
-        dispatch( fetch() )
+        dispatch( fetchCategory() )
     }, [ dispatch ] )
     return (
         <div>
-
-
             <Nav />
             <section className="text-gray-600 body-font">
                 <div className="container px-8 py-24 mx-auto mt-(-100)">
@@ -41,18 +34,7 @@ const Dasbroad = () =>
                                     <th className="px-6 py-4 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
                                         name
                                     </th>
-                                    <th className="px-6 py-4 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                                        Price
-                                    </th>
-                                    <th className="px-6 py-4 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                                        Details
-                                    </th>
-                                    <th className="px-6 py-4 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                                        Image
-                                    </th>
-                                    <th className="px-6 py-4 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                                        Category ID
-                                    </th>
+
                                     <th className="px-6 py-4 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
                                     </th>
 
@@ -60,18 +42,13 @@ const Dasbroad = () =>
                                 </tr>
                             </thead>
                             <tbody>
-                                { products.map( ( item: Iproduct, index: any ) => (
+                                { category.map( ( item: Category, index: any ) => (
                                     <tr key={ item._id }>
                                         <td className="border-t-2 border-gray-200 px-6 py-4">{ index + 1 }</td>
 
                                         <td className="border-t-2 border-gray-200 px-6 py-4">{ item._id }</td>
                                         <td className="border-t-2 border-gray-200 px-6 py-4">{ item.name }</td>
-                                        <td className="border-t-2 border-gray-200 px-6 py-4">{ item.price }</td>
-                                        <td className="border-t-2 border-gray-200 px-6 py-4">{ item.chitiet }</td>
-                                        <td className="border-t-2 border-gray-200 px-6 py-4 text-lg text-gray-900">
-                                            <img src={ item.img } alt="" />
-                                        </td>
-                                        <td className="border-t-2 border-gray-200 px-6 py-4">{ item.categoryId }</td>
+
                                         <td className="border-t-2 border-gray-200 w-10 text-center">
                                             <Button type="danger" icon={ <AiTwotoneDelete /> } onclick={ () => dispatch( remove( item._id! ) ) } />
                                         </td>
@@ -93,11 +70,7 @@ const Dasbroad = () =>
                     </div>
                 </div>
             </section>
-
-            {/* <Navbar /> */ }
-
-        </div>
-    )
+        </div> )
 }
 
-export default Dasbroad
+export default Catelist

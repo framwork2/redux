@@ -1,32 +1,38 @@
 import { produce } from "immer"
 import { Category } from "../interface/category"
 const initialState = {
-    category: [] as Category[]
+    category: [] as Category[],
+    selectedCategoryId: null, // Mã danh mục được chọn hiện tại (ban đầu là null)
+    currentPage: 1,
+    itemsPerPage: 20,
+    products: []
 }
 
+// reducers/categoryReducer.ts
 export const categoryReducer = ( state = initialState, action: any ) =>
 {
-    return produce( state, ( state ) =>
+    return produce( state, ( draft ) =>
     {
         switch ( action.type )
         {
             case "fetch/category":
-                state.category = action.payload
+                draft.category = action.payload;
                 break;
             case "delete/category":
-                const id = action.payload
-                state.category = state.category.filter( ( item: any ) => item.id != id )
+                const id = action.payload;
+                draft.category = draft.category.filter( ( item: any ) => item.id !== id );
                 break;
             case "add/category":
-                state.category = state.category || []; // Đảm bảo users là một mảng trước khi thêm người dùng
-
-                state.category.push( action.payload )
+                draft.category = draft.category || []; // Đảm bảo users là một mảng trước khi thêm người dùng
+                draft.category.push( action.payload );
                 break;
-
-
+            case "SELECT_CATEGORY":
+                draft.selectedCategoryId = action.id; // Cập nhật selectedCategoryId khi chọn danh mục
+                draft.currentPage = 1; // Reset trang về 1 khi chọn danh mục mới
+                break;
             default:
-                state;
-        }
 
-    } )
-}
+                break;
+        }
+    } );
+};

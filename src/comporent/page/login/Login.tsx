@@ -1,11 +1,14 @@
 // Login.js (hoặc Login.tsx nếu bạn đang sử dụng TypeScript)
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useHistory hook
+
 import { Signin } from "../../../action/auth";
 import { useAppDispatch, useAppSelector } from "../../../store/hook";
 import * as yup from "yup"
 const Login = () =>
 {
+    const history = useNavigate(); // Get the history object
     const dispatch = useAppDispatch();
     const formData = useAppSelector( ( state ) => state.login.form )
     const handleInputChange = ( e: any ) =>
@@ -17,6 +20,7 @@ const Login = () =>
     const [ errors, setErrors ] = useState( {
         email: null,
         password: null,
+
 
     } );
     const validationSchema = yup.object().shape( {
@@ -32,8 +36,9 @@ const Login = () =>
             {
                 // Nếu validate thành công và không có lỗi, gửi thông tin đăng ký lên store
                 dispatch( Signin( formData ) );
+                history( "/" );
             } )
-            .catch( ( error ) =>
+            .catch( ( error: any ) =>
             {
                 // Nếu validate không thành công, hiển thị thông báo lỗi tương ứng
                 const errorMessages = {};

@@ -11,6 +11,8 @@ export default function Example ()
 {
     const dispath: Dispatch<any> = useAppDispatch()
     const { products, error } = useAppSelector( ( state: any ) => state.product )
+    console.log( products );
+
 
     useEffect( () =>
     {
