@@ -7,7 +7,6 @@ export const fetchCategory = () => async ( dispatch: any ) =>
     {
         const { data } = await axios.get( `http://localhost:8080/api/category` )
         dispatch( { type: "fetch/category", payload: data } )
-        console.log( data );
 
     } catch ( error )
     {
@@ -60,3 +59,18 @@ export const remove = ( id: number | string ) => async ( dispath: any ) =>
 
     }
 }
+export const get = ( product: Category ) => async ( dispath: any ) =>
+{
+    try
+    {
+        await axios.get( `http://localhost:8080/api/category/${ product._id }` )
+
+    } catch ( error )
+    {
+
+    }
+}
+export const selectCategory = ( category: Category ) => ( {
+    type: "SELECT_CATEGORY",
+    payload: category,
+} );

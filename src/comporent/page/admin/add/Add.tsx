@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../store/hook';
 import { add } from '../../../../action/product';
 import { Dispatch } from 'redux';
+import { useNavigate } from "react-router-dom"
 import { fetchCategory } from '../../../../action/category';
 import { Category } from '../../../../interface/category';
+import Nav from '../navAdmin/Nav';
 
 const Add = () =>
 {
@@ -15,7 +17,7 @@ const Add = () =>
         chitiet: '',
         img: '',
     } );
-
+    const navigate = useNavigate()
 
     const dispatch: Dispatch<any> = useAppDispatch();
     useEffect( () =>
@@ -31,6 +33,7 @@ const Add = () =>
 
         // Gửi action để thêm sản phẩm mới vào Redux Store
         dispatch( add( productData ) );
+        navigate( "/admin" )
 
         // Xóa trạng thái sau khi thêm sản phẩm thành công
         setProductData( {
@@ -49,6 +52,7 @@ const Add = () =>
         setProductData( {
             ...productData,
             [ name ]: value,
+
         } );
     };
     const handleImageChange = ( e: any ) =>
@@ -74,6 +78,7 @@ const Add = () =>
     };
     return (
         <div>
+            <Nav />
             <form
                 className="max-w-md mx-auto p-4"
                 onSubmit={ handleSubmit }

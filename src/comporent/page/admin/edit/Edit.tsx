@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 import { edit } from '../../../../action/product';
 import { useAppDispatch, useAppSelector } from '../../../../store/hook';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { fetchCategory } from '../../../../action/category';
 import { Dispatch } from 'redux';
 import { Category } from '../../../../interface/category';
+import Nav from '../navAdmin/Nav';
 
 const EditProduct = () =>
 {
+    const navigate = useNavigate()
+
     const { _id } = useParams<{ _id: any }>();
 
     const dispatch: Dispatch<any> = useAppDispatch();
@@ -80,81 +83,85 @@ const EditProduct = () =>
     {
         // Gửi hành động để cập nhật thông tin sản phẩm
         dispatch( edit( editedProduct ) );
+        navigate( "/admin" )
     };
 
     return (
-        <div className="max-w-md mx-auto p-4">
-            <h2 className="text-xl font-semibold mb-4">Edit Product</h2>
-            <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">Name</label>
-                <input
-                    type="text"
-                    name="name"
-                    value={ editedProduct.name }
-                    onChange={ handleInputChange }
-                    className="border rounded py-2 px-3 w-full"
-                />
-            </div>
-            <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">Price</label>
-                <input
-                    type="number"
-                    name="price"
-                    value={ editedProduct.price }
-                    onChange={ handleInputChange }
-                    className="border rounded py-2 px-3 w-full"
-                />
-            </div>
-
-            <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">Details</label>
-                <textarea
-                    name="chitiet"
-                    value={ editedProduct.chitiet }
-                    onChange={ handleInputChange }
-                    className="border rounded py-2 px-3 w-full h-32"
-                />
-            </div>
-            <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">Category</label>
-                <select
-                    name="categoryId"
-                    value={ editedProduct.categoryId }
-                    onChange={ handleCategoryChange }
-                    className="border rounded py-2 px-3 w-full"
-                >
-                    <option value="">Select category</option>
-                    { category.map( ( category: Category ) => (
-                        <option key={ category._id } value={ category._id }>
-                            { category.name }
-                        </option>
-                    ) ) }
-                </select>
-            </div>
-            <div className="mb-4">
-                {/* Phần tử input cho phép tải lên hình ảnh */ }
-                <input
-                    type="file"
-                    name="img"
-                    onChange={ handleImageChange }
-                />
-            </div>
-            {/* Hiển thị hình ảnh đã chọn (tạm thời) */ }
-            { editedProduct.img && (
+        <div>
+            <Nav />
+            <div className="max-w-md mx-auto p-4">
+                <h2 className="text-xl font-semibold mb-4">Edit Product</h2>
                 <div className="mb-4">
-                    <img
-                        src={ editedProduct.img }
-                        alt="Preview"
-                        className="w-32 h-32 rounded"
+                    <label className="block text-sm font-medium mb-1">Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={ editedProduct.name }
+                        onChange={ handleInputChange }
+                        className="border rounded py-2 px-3 w-full"
                     />
                 </div>
-            ) }
-            <button
-                onClick={ handleUpdateProduct }
-                className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-            >
-                Update Product
-            </button>
+                <div className="mb-4">
+                    <label className="block text-sm font-medium mb-1">Price</label>
+                    <input
+                        type="number"
+                        name="price"
+                        value={ editedProduct.price }
+                        onChange={ handleInputChange }
+                        className="border rounded py-2 px-3 w-full"
+                    />
+                </div>
+
+                <div className="mb-4">
+                    <label className="block text-sm font-medium mb-1">Details</label>
+                    <textarea
+                        name="chitiet"
+                        value={ editedProduct.chitiet }
+                        onChange={ handleInputChange }
+                        className="border rounded py-2 px-3 w-full h-32"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label className="block text-sm font-medium mb-1">Category</label>
+                    <select
+                        name="categoryId"
+                        value={ editedProduct.categoryId }
+                        onChange={ handleCategoryChange }
+                        className="border rounded py-2 px-3 w-full"
+                    >
+                        <option value="">Select category</option>
+                        { category.map( ( category: Category ) => (
+                            <option key={ category._id } value={ category._id }>
+                                { category.name }
+                            </option>
+                        ) ) }
+                    </select>
+                </div>
+                <div className="mb-4">
+                    {/* Phần tử input cho phép tải lên hình ảnh */ }
+                    <input
+                        type="file"
+                        name="img"
+                        onChange={ handleImageChange }
+                    />
+                </div>
+                {/* Hiển thị hình ảnh đã chọn (tạm thời) */ }
+                { editedProduct.img && (
+                    <div className="mb-4">
+                        <img
+                            src={ editedProduct.img }
+                            alt="Preview"
+                            className="w-32 h-32 rounded"
+                        />
+                    </div>
+                ) }
+                <button
+                    onClick={ handleUpdateProduct }
+                    className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+                >
+                    Update Product
+                </button>
+            </div>
         </div>
     );
 };
