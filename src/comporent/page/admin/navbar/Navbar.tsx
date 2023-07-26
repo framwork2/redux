@@ -1,8 +1,8 @@
 import { Sidebar } from 'flowbite-react';
-import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
-type Props = {}
+import { HiArrowSmRight, HiChartPie, HiShoppingBag, HiTable, HiUser } from 'react-icons/hi';
 
-const Navbar = ( props: Props ) =>
+
+const Navbar = () =>
 {
     return (
         <div>    <Sidebar aria-label="Default sidebar example">

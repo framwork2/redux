@@ -12,6 +12,8 @@ const Catelist = () =>
 {
     const dispatch: Dispatch<any> = useAppDispatch()
     const { category } = useAppSelector( ( state ) => state.category )
+    console.log( category );
+
     useEffect( () =>
     {
         dispatch( fetchCategory() )
@@ -52,7 +54,7 @@ const Catelist = () =>
                                         <td className="border-t-2 border-gray-200 w-10 text-center">
                                             <Button type="danger" icon={ <AiTwotoneDelete /> } onclick={ () => dispatch( remove( item._id! ) ) } />
                                         </td>
-                                        <Link to={ "add" }><td className="border-t-2 border-gray-200 w-10 text-center">
+                                        <Link to={ "addcate" }><td className="border-t-2 border-gray-200 w-10 text-center">
                                             <Button type="primary" icon={ <AiFillPlusSquare /> } />
                                         </td></Link>
                                         <Link to={ "edit/" + item._id }>   <td className="border-t-2 border-gray-200 w-10 text-center">

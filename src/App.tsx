@@ -12,6 +12,7 @@ import EditProduct from './comporent/page/admin/edit/Edit';
 import ProductPage from './comporent/page/productpage/ProductPage';
 import Profile from './comporent/page/profile/Profile';
 import Catelist from './comporent/page/admin/catelist/Catelist';
+import CateAdd from './comporent/page/admin/addCate/CateAdd';
 
 function App ()
 {
@@ -37,6 +38,8 @@ function App ()
           <Routes>
             <Route path='/admin' element={ <Dasbroad></Dasbroad> } />
             <Route path='/admin/add' element={ <Add /> } />
+            <Route path='/admin/cate/addcate' element={ <CateAdd /> } />
+
             <Route path='/admin/cate' element={ <Catelist /> } />
 
             <Route path='/admin/edit/:_id' element={ <EditProduct /> } />
