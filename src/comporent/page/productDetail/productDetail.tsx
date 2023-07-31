@@ -4,6 +4,7 @@ import Example1 from '../nav/products'
 import { get } from '../../../action/product'
 import { Dispatch } from 'redux'
 import { useParams } from 'react-router-dom'
+import { add } from '../../../slice/cart'
 
 type Props = {}
 
@@ -26,7 +27,7 @@ const Productdetail = ( props: Props ) =>
         <section className="text-gray-600 body-font overflow-hidden">
             <Example1 />
             { product && (
-                <div className="container px-5 py-24 mx-auto">
+                <div key={ product._id } className="container px-5 py-24 mx-auto">
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
                         <img
                             alt="ecommerce"
@@ -177,9 +178,9 @@ const Productdetail = ( props: Props ) =>
                                 <span className="title-font font-medium text-2xl text-gray-900">
                                     { product.price }
                                 </span>
-                                <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-                                    Button
-                                </button>
+                                <a href="/cart"><button onClick={ () => dispatch( add( { ...product, quantity: 1 } ) ) } className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                                    addCart
+                                </button></a>
                                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                                     <svg
                                         fill="currentColor"

@@ -2,7 +2,7 @@ import { produce } from "immer";
 import { Signup } from "../interface/user";
 
 const initialState = {
-    isAuthenticated: true,
+    isAuthenticated: false,
     isRegistered: false,
     user: null as Signup | null,
     formData: { email: "", password: "", name: "", confirmPassword: "" },
@@ -21,8 +21,8 @@ export const LoginReducer = ( state = initialState, action: any ) =>
                 state.user = action.payload;
 
                 // Lưu trạng thái đăng nhập vào localStorage
-                localStorage.setItem( "isAuthenticated", "true" );
-                localStorage.setItem( "user", JSON.stringify( action.payload ) );
+                sessionStorage.setItem( "isAuthenticated", "true" );
+                sessionStorage.setItem( "user", JSON.stringify( action.payload ) );
                 break;
             case "LOGOUT": // Thêm action LOGOUT để xử lý việc đăng xuất
                 state.isAuthenticated = false;

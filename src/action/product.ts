@@ -1,19 +1,24 @@
 import axios from "axios";
 import { Iproduct } from "../interface/product";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetch = () => async ( dispath: any ) =>
-{
-    try
+export const fetch = createAsyncThunk(
+    "product/fetch",
+
+    async () =>
     {
-        const { data } = await axios.get( `http://localhost:8080/api` )
-        dispath( { type: "fetch/product", payload: data } )
-        console.log( data );
+        try
+        {
+            const { data } = await axios.get( `http://localhost:8080/api` )
 
-    } catch ( error )
-    {
+            return data
 
+        } catch ( error )
+        {
+
+        }
     }
-}
+)
 export const add = ( product: Iproduct ) => async ( dispatch: any ) =>
 {
     try
@@ -25,7 +30,6 @@ export const add = ( product: Iproduct ) => async ( dispatch: any ) =>
 
         );
         dispatch( { type: "add/product", payload: data } )
-        console.log( data );
 
 
     } catch ( error: any )
@@ -47,29 +51,39 @@ export const edit = ( id: Iproduct ) => async ( dispath: any ) =>
 
     }
 }
-export const remove = ( id: number | string ) => async ( dispath: any ) =>
-{
-    try
-    {
-        await axios.delete( `http://localhost:8080/api/${ id }` )
-        dispath( { type: "delete/product", payload: id } )
-        console.log( id );
+export const remove = createAsyncThunk(
+    "product/delete",
 
-    } catch ( error )
+    async ( id: number ) =>
     {
+        try
+        {
+            await axios.delete( `http://localhost:8080/api/${ id }` )
+            console.log( id );
+            return id
 
+
+        } catch ( error )
+        {
+
+        }
     }
-}
-export const get = ( product: Iproduct ) => async ( dispath: any ) =>
-{
-    try
-    {
-        await axios.get( `http://localhost:8080/api/${ product._id }` )
-        dispath( { type: "get/product", payload: product } )
-        console.log( product );
+)
+export const get = createAsyncThunk(
+    "product/get",
 
-    } catch ( error )
+    async ( product: Iproduct ) =>
     {
+        try
+        {
+            await axios.get( `http://localhost:8080/api/${ product._id }` )
+            console.log( product );
+            return product
 
+
+        } catch ( error )
+        {
+
+        }
     }
-}
+)

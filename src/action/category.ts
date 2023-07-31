@@ -1,76 +1,90 @@
 import axios from "axios";
 import { Category } from "../interface/category";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchCategory = () => async ( dispatch: any ) =>
-{
-    try
+export const fetchCategory = createAsyncThunk(
+    "fetch/category",
+    async () =>
     {
-        const { data } = await axios.get( `http://localhost:8080/api/category` )
-        dispatch( { type: "fetch/category", payload: data } )
+        try
+        {
+            const { data } = await axios.get( `http://localhost:8080/api/category` )
+            return data
+        } catch ( error )
+        {
 
-    } catch ( error )
-    {
-
+        }
     }
-}
-export const add = ( product: Category ) => async ( dispatch: any ) =>
-{
-    try
+)
+export const add = createAsyncThunk(
+    " add/category",
+    async ( product: Category ) =>
     {
+        try
+        {
 
-        const { data } = await axios.post( `http://localhost:8080/api/category`, product
-
-
-
-        );
-        dispatch( { type: "add/category", payload: data } )
-        console.log( data );
+            const { data } = await axios.post( `http://localhost:8080/api/category`, product
 
 
-    } catch ( error: any )
-    {
-    } finally
-    {
+
+            );
+
+            console.log( data );
+            return data
+
+
+        } catch ( error: any )
+        {
+        } finally
+        {
+        }
     }
-}
-export const edit = ( product: Category ) => async ( dispath: any ) =>
-{
-    try
+)
+export const edit = createAsyncThunk(
+    "edit/category",
+    async ( product: Category ) =>
     {
-        const { data } = await axios.put( `http://localhost:8080/api/category/${ product._id }`, product )
-        dispath( { type: "edit/category", payload: data } )
-        console.log( data );
+        try
+        {
+            const { data } = await axios.put( `http://localhost:8080/api/category/${ product._id }`, product )
+            return data
+            console.log( data );
 
-    } catch ( error )
-    {
+        } catch ( error )
+        {
 
+        }
     }
-}
-export const remove = ( id: number | string ) => async ( dispath: any ) =>
-{
-    try
+)
+export const remove = createAsyncThunk(
+    "remove/category",
+    async ( id: number | string ) =>
     {
-        await axios.delete( `http://localhost:8080/api/category/${ id }` )
-        dispath( { type: "delete/category", payload: id } )
-        console.log( id );
+        try
+        {
+            await axios.delete( `http://localhost:8080/api/category/${ id }` )
+            return id
+            console.log( id );
 
-    } catch ( error )
-    {
+        } catch ( error )
+        {
 
+        }
     }
-}
-export const get = ( product: Category ) => async ( dispath: any ) =>
-{
-    try
+)
+export const get = createAsyncThunk(
+    "get/category",
+    async ( id: number | string ) =>
     {
-        await axios.get( `http://localhost:8080/api/category/${ product._id }` )
+        try
+        {
+            await axios.get( `http://localhost:8080/api/category/${ id }` )
+            return id
+            console.log( id );
 
-    } catch ( error )
-    {
+        } catch ( error )
+        {
 
+        }
     }
-}
-export const selectCategory = ( category: Category ) => ( {
-    type: "SELECT_CATEGORY",
-    payload: category,
-} );
+)

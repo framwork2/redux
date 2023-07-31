@@ -47,20 +47,7 @@ export const productReducer = ( state = initialState, action: any ) =>
                     ...action.payload,
                 };
                 break;
-            case "get/product":
-                const products = action.payload;
-                if ( products.length > 0 )
-                {
-                    const firstProduct = products[ 0 ];
-                    state.productss = {
-                        name: firstProduct.name,
-                        chitiet: firstProduct.chitiet,
-                        price: firstProduct.price,
-                    };
-                } else
-                {
-                    state.productss = initialState.productss;
-                }
+
                 break;
 
             default:
