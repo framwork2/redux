@@ -6,6 +6,8 @@ import { useAppDispatch, useAppSelector } from "../../../store/hook";
 import { Iproduct } from "../../../interface/product";
 import { fetch } from "../../../action/product";// Import các import khác
 
+import axios from "axios"
+
 export default function Example ()
 {
     const dispatch = useAppDispatch();
@@ -30,6 +32,11 @@ export default function Example ()
         setSearchResults( filteredProducts );
     };
 
+
+   
+ 
+
+   
     return (
         <div className="bg-white">
             {/* ... */ }

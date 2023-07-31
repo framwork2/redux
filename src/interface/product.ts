@@ -8,4 +8,6 @@ export interface Iproduct
     img?: string | undefined,
     categoryId?: string,
     quantity?: number | undefined
+
+
 }

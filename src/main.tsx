@@ -11,4 +11,5 @@ ReactDOM.createRoot( document.getElementById( 'root' )! ).render(
     </PersistGate>
   </Provider>
 
+  <Provider store={ store }> <App /></Provider>
 )
