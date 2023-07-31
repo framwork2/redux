@@ -3,33 +3,29 @@ import { useAppDispatch, useAppSelector } from '../../../../store/hook';
 import { useParams, useNavigate } from 'react-router-dom';
 import { edit, fetchCategory } from '../../../../action/category';
 import { Dispatch } from 'redux';
-import { Category } from '../../../../interface/category';
 import Nav from '../navAdmin/Nav';
-import { Iproduct } from '../../../../interface/product';
 
 const EditCate = () =>
 {
-    const navigate = useNavigate()
-
+    const navigate = useNavigate();
     const { _id } = useParams<{ _id: any }>();
-
     const dispatch: Dispatch<any> = useAppDispatch();
-    const product = useAppSelector( ( state ) => state.category.category.find( ( item ) => item._id === _id ) );
-    const { products } = useAppSelector( ( state ) => state.product );
+    const product = useAppSelector( ( state ) =>
+        state.category.category.find( ( item ) => item._id === _id )
+    );
+    console.log( product );
 
-    console.log( products );
-
-    // State để lưu trữ thông tin sản phẩm chỉnh sửa
-    const [ editedCate, setEditedCate ] = useState( {
-        _id: "",
-        name: "",
-        products: ""
-    } );
 
     useEffect( () =>
     {
         dispatch( fetchCategory() );
     }, [ dispatch ] );
+
+    // State để lưu trữ thông tin sản phẩm chỉnh sửa
+    const [ editedCate, setEditedCate ] = useState( {
+        _id: '',
+        name: '',
+    } );
 
     useEffect( () =>
     {
@@ -38,19 +34,9 @@ const EditCate = () =>
             setEditedCate( {
                 _id: product._id,
                 name: product.name,
-                products: product.name
-
             } );
         }
-    }, [ products ] );
-
-    const handleCategoryChange = ( e: any ) =>
-    {
-        setEditedCate( {
-            ...editedCate,
-            products: e.target.value,
-        } );
-    };
+    }, [ product ] );
 
     const handleInputChange = ( e: any ) =>
     {
@@ -65,7 +51,7 @@ const EditCate = () =>
     {
         // Gửi hành động để cập nhật thông tin sản phẩm
         dispatch( edit( editedCate ) );
-        navigate( "/admin" )
+        navigate( '/admin' );
     };
 
     return (
@@ -82,25 +68,6 @@ const EditCate = () =>
                         onChange={ handleInputChange }
                         className="border rounded py-2 px-3 w-full"
                     />
-                </div>
-
-
-
-                <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Category</label>
-                    <select
-                        name="categoryId"
-                        value={ editedCate.products }
-                        onChange={ handleCategoryChange }
-                        className="border rounded py-2 px-3 w-full"
-                    >
-                        <option value="">Select category</option>
-                        { products.map( ( category: Iproduct ) => (
-                            <option key={ category._id } value={ category._id }>
-                                { category.name }
-                            </option>
-                        ) ) }
-                    </select>
                 </div>
 
                 <button

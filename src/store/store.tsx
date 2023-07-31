@@ -1,30 +1,48 @@
-import thunk from 'redux-thunk';
-import { legacy_createStore as createStore, combineReducers, applyMiddleware, compose } from 'redux'
-import { productReducer } from "../reducer/product";
-import { LoginReducer, singupReducer } from '../reducer/auths';
-import { categoryReducer } from '../reducer/category';
+import { configureStore } from '@reduxjs/toolkit';
+import { productReducer } from '../slice/product';
+import { categoryReducer } from '../slice/category';
+import { combineReducers } from '@reduxjs/toolkit';
+import
+{
+    persistStore,
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER,
+} from 'redux-persist';
 
-const composeEnhancers =
-    typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-        ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__( {
-            // Specify extension’s options like name, actionsDenylist, actionsCreators, serialize...
-        } )
-        : compose;
-const enhancer = composeEnhancers(
-    applyMiddleware( thunk ),
-    // other store enhancers if any
-);
-
+import storage from 'redux-persist/lib/storage';
+import { reducerCart } from '../slice/cart';
+import { authReducer } from '../slice/auth';
+const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: [ 'cart', ]
+}
 const Root = combineReducers(
     {
         product: productReducer,
-        login: LoginReducer,
-        singup: singupReducer,
-        category: categoryReducer
+        login: authReducer,
+        category: categoryReducer,
+        cart: reducerCart
     }
 )
-const store = createStore( Root, enhancer );
-export default store
+const persistedReducer = persistReducer( persistConfig, Root )
+export const store = configureStore(
+    {
+        reducer: persistedReducer,
+        middleware: ( getDefaultMiddleware ) =>
+            getDefaultMiddleware( {
+                serializableCheck: {
+                    ignoredActions: [ FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER ],
+                },
+            } ),
+    }
+)
+export default persistStore( store );
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}

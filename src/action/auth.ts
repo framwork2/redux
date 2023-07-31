@@ -1,43 +1,50 @@
 import axios from "axios";
 import { Login, Signup } from "../interface/user";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const Signin = ( product: Login ) => async ( dispatch: any ) =>
-{
-    try
+export const Signin = createAsyncThunk(
+    "auth/signin",
+    async ( product: Login ) =>
     {
+        try
+        {
 
-        const { data } = await axios.post( `http://localhost:8080/api/signin`, product
-
-
-
-        );
-        dispatch( { type: "LOGIN", payload: data } )
-        console.log( data );
+            const { data } = await axios.post( `http://localhost:8080/api/signin`, product
 
 
-    } catch ( error: any )
-    {
-    } finally
-    {
+
+            );
+
+            return data
+
+
+        } catch ( error: any )
+        {
+        } finally
+        {
+        }
     }
-}
-export const Dk = ( product: Signup ) => async ( dispatch: any ) =>
-{
-    try
+)
+export const Dk = createAsyncThunk(
+    "auth/signin",
+    async ( product: Signup ) =>
     {
+        try
+        {
 
-        const { data } = await axios.post( `http://localhost:8080/api/signup`, product
-
-
-
-        );
-        dispatch( { type: "SINGUP", payload: data } )
-        console.log( data );
+            const { data } = await axios.post( `http://localhost:8080/api/signup`, product
 
 
-    } catch ( error: any )
-    {
-    } finally
-    {
+
+            );
+
+            return data
+
+
+        } catch ( error: any )
+        {
+        } finally
+        {
+        }
     }
-}
+)
