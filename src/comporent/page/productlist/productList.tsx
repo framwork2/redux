@@ -1,56 +1,59 @@
-import { useEffect } from "react"
-import { Button } from "../../showInfor"
-import { Iproduct } from "../../../interface/product"
-import { fetch } from "../../../action/product";
-import { useAppDispatch, useAppSelector } from "../../../store/hook";
-import { Dispatch } from "redux";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "../../showInfor";
 import { add } from "../../../slice/cart";
+import { useAppDispatch, useAppSelector } from "../../../store/hook";
+import { Iproduct } from "../../../interface/product";
+import { fetch } from "../../../action/product";// Import các import khác
 
-import { useDispatch, useSelector } from "react-redux"
 import axios from "axios"
-import { Iproduct } from "../../../interface/product"
 
 export default function Example ()
 {
-    const dispath: Dispatch<any> = useAppDispatch()
-    const { products, error } = useAppSelector( ( state: any ) => state.product )
-
-
-    useEffect( () =>
-    {
-
-        dispath( fetch() )
-
-    }, [ dispath ] )
-    const dispath = useDispatch()
-    const { products, error } = useSelector( ( state: any ) => state )
+    const dispatch = useAppDispatch();
+    const { products, error } = useAppSelector( ( state: any ) => state.product );
+    const [ searchKeyword, setSearchKeyword ] = useState( "" );
+    const [ searchResults, setSearchResults ] = useState<Iproduct[]>( [] );
 
     useEffect( () =>
     {
-        const fetch = async () =>
-        {
-            try
-            {
-                const { data } = await axios.get( `http://localhost:8080/api` )
-                dispath( { type: "fetch/product", payload: data } )
-                console.log( data );
+        dispatch( fetch() );
+    }, [ dispatch ] );
 
-            } catch ( error )
-            {
+    const handleSearch = ( event: React.ChangeEvent<HTMLInputElement> ) =>
+    {
+        const keyword = event.target.value;
+        setSearchKeyword( keyword );
 
-            }
-        }
-        fetch()
+        // Tìm kiếm trong danh sách sản phẩm dựa trên từ khóa
+        const filteredProducts = products.filter( ( product: Iproduct ) =>
+            product.name.toLowerCase().includes( keyword.toLowerCase() )
+        );
+        setSearchResults( filteredProducts );
+    };
 
-    }, [] )
+
+   
+ 
+
+   
     return (
         <div className="bg-white">
-            <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                <h2 className="sr-only">Products</h2>
+            {/* ... */ }
+            <div className="flex justify-center">
+                <input
+                    className="border rounded-lg px-4 py-2 w-64 shadow-sm focus:outline-none focus:ring focus:border-blue-300"
 
-                <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                    { products.map( ( product: Iproduct ) => (
+                    type="text"
+                    value={ searchKeyword }
+                    onChange={ handleSearch }
+                    placeholder="Enter search keyword..."
+                />
+            </div>
+            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                {/* Hiển thị tất cả sản phẩm nếu không có từ khóa tìm kiếm */ }
+                { !searchKeyword
+                    ? products.map( ( product: Iproduct ) => (
                         <a key={ product._id } href="" className="group">
                             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                                 <img
@@ -62,12 +65,26 @@ export default function Example ()
                             <h3 className="mt-4 text-sm text-gray-700">{ product.chitiet }</h3>
 
                             <p className="mt-1 text-lg font-medium text-gray-900">{ product.price }</p>
-                            <Link to={ "/cart" }><Button type="danger" onclick={ () => dispath( add( { ...product, quantity: 1 } ) ) } >addCart</Button></Link>
-                            <Link to={ "product/" + product._id }><Button type="primary" >Review</Button></Link>
-                        </a>
+                            <Link to={ "/cart" }><Button type="danger" onclick={ () => dispatch( add( { ...product, quantity: 1 } ) ) } >addCart</Button></Link>
+                            <Link to={ "product/" + product._id }><Button type="primary" >Review</Button></Link>                        </a>
+                    ) )
+                    : // Hiển thị kết quả tìm kiếm nếu có từ khóa tìm kiếm
+                    searchResults.map( ( product: Iproduct ) => (
+                        <a key={ product._id } href="" className="group">
+                            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                                <img
+                                    src={ product.img }
+                                    className="h-full w-full object-cover object-center group-hover:opacity-75"
+                                />
+                            </div>
+                            <h3 className="mt-4 text-sm text-gray-700">{ product.name }</h3>
+                            <h3 className="mt-4 text-sm text-gray-700">{ product.chitiet }</h3>
+
+                            <p className="mt-1 text-lg font-medium text-gray-900">{ product.price }</p>
+                            <Link to={ "/cart" }><Button type="danger" onclick={ () => dispatch( add( { ...product, quantity: 1 } ) ) } >addCart</Button></Link>
+                            <Link to={ "product/" + product._id }><Button type="primary" >Review</Button></Link>                        </a>
                     ) ) }
-                </div>
             </div>
         </div>
-    )
+    );
 }

@@ -19,30 +19,8 @@ export default function Example1 ()
 {
     const cartItems = useAppSelector( ( state ) => state.cart.items );
     const cartItemCount = cartItems.length;
-    console.log( cartItemCount );
-
-
-
-
-
-
-
-
-
     const storedName = JSON.parse( sessionStorage.getItem( 'user' )! )
     const isLoggedIn = !!storedName;
-
-
-
-
-
-
-
-
-
-
-
-
     return (
 
         <Disclosure as="nav" className="bg-gray-800">
